@@ -329,9 +329,6 @@ def prepare_model_params(msel_dict, pipeline, cv_outer):
             search = GridSearchCV
         elif search == 'random':
             search = RandomizedSearchCV
-        else:
-            raise_error(f'Parameter "search" must be "grid" or "random"'
-                        f'(was {search})')
 
         logger.info('Hyperparameters:')
         for k, v in hyper_params.items():
