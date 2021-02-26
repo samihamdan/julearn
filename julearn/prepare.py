@@ -476,7 +476,7 @@ def _prepare_preprocess_y(preprocess_y):
     return preprocess_y
 
 
-def prepare_cv(cv):
+def prepare_cv(cv, seed=None):
     """Generates a CV using string compatible with
     repeat:5_nfolds:5 where 5 can be exchange with any int.
     Alternatively, it can take in a valid cv splitter or int as
@@ -495,14 +495,22 @@ def prepare_cv(cv):
                               for name in [n_repeats, n_folds]]
         logger.info(f'CV interpreted as RepeatedKFold with {n_repeats} '
                     f'repetitions of {n_folds} folds')
-        return RepeatedKFold(n_splits=n_folds, n_repeats=n_repeats)
+        return RepeatedKFold(n_splits=n_folds, n_repeats=n_repeats,
+                             random_state=random_state)
 
+    random_state = (None if seed is None
+                    else np.random.randint(0, 1_000_000))
     try:
         _cv = check_cv(cv)
         logger.info(f'Using scikit-learn CV scheme {_cv}')
+        if hasattr(_cv, 'random_state'):
+            _cv.random_state = (_cv.random_state
+                                if _cv.random_state is not None
+                                else random_state)
     except ValueError:
         _cv = parser(cv)
 
+    logger.info(f'Set random_state for cv to {random_state}')
     return _cv
 
 

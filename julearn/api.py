@@ -2,6 +2,7 @@
 #          Sami Hamdan <s.hamdan@fz-juelich.de>
 # License: AGPL
 import numpy as np
+from copy import deepcopy
 from sklearn.model_selection import cross_validate
 import pandas as pd
 
@@ -26,6 +27,7 @@ def run_cross_validation(
         preprocess_y=None,
         preprocess_confounds=None,
         return_estimator=False,
+        return_indices=False,
         cv=None,
         groups=None,
         scoring=None,
@@ -93,6 +95,9 @@ def run_cross_validation(
           training data.
         * 'all': Return all the estimators (final and cv).
 
+    return_indices : bool
+        Whether to return the training and testing indices for each cv fold.
+        By default False
 
     cv : int, str or cross-validation generator | None
         Cross-validation splitting strategy to use for model evaluation.
@@ -180,7 +185,9 @@ def run_cross_validation(
     model_tuple = prepare_model(model=model, problem_type=problem_type)
 
     # Prepare cross validation
-    cv_outer = prepare_cv(cv)
+
+    cv_outer = prepare_cv(cv, seed=seed)
+    cv_outer_copy = deepcopy(cv_outer)
 
     pipeline = create_extended_pipeline(preprocess_X,
                                         preprocess_y,
@@ -198,7 +205,6 @@ def run_cross_validation(
                       problem_type)
 
     cv_return_estimator = return_estimator in ['cv', 'all']
-
     scores = cross_validate(pipeline, df_X_conf, y, cv=cv_outer,
                             scoring=scorer, groups=df_groups,
                             return_estimator=cv_return_estimator)
@@ -212,6 +218,10 @@ def run_cross_validation(
     scores['repeat'] = repeats
     scores['fold'] = folds
 
+    if return_indices:
+        scores['train_indices'], scores['test_indices'] = zip(
+            *list(cv_outer_copy.split(df_X_conf, y, groups=df_groups))
+        )
     out = pd.DataFrame(scores)
     if return_estimator in ['final', 'all']:
         pipeline.fit(df_X_conf, y)

@@ -1,6 +1,7 @@
 # Authors: Federico Raimondo <f.raimondo@fz-juelich.de>
 #          Sami Hamdan <s.hamdan@fz-juelich.de>
 # License: AGPL
+from copy import deepcopy
 import numpy as np
 
 from numpy.testing import assert_array_equal
@@ -18,6 +19,7 @@ from sklearn.preprocessing import LabelBinarizer
 from sklearn.utils import parallel_backend
 from sklearn.metrics import accuracy_score, make_scorer
 import pandas as pd
+from pandas.testing import assert_series_equal
 from seaborn import load_dataset
 import pytest
 
@@ -247,7 +249,8 @@ def test_tune_hyperparam():
         return_estimator='final', pos_labels=['setosa'], cv=cv_outer)
 
     np.random.seed(42)
-    cv_outer = RepeatedKFold(n_splits=3, n_repeats=1)
+    cv_state = np.random.randint(0, 1_000_000)
+    cv_outer = RepeatedKFold(n_splits=3, n_repeats=1, random_state=cv_state)
     cv_inner = RepeatedKFold(n_splits=3, n_repeats=1)
 
     clf = make_pipeline(StandardScaler(), svm.SVC())
@@ -533,3 +536,54 @@ def test_scorers():
 
     assert_array_equal(result_scoring_name['test_score'],
                        result_scoring_name_list['test_accuracy'])
+
+
+def test_returned_indices():
+
+    df_iris = load_dataset('iris')
+
+    df_iris = df_iris[df_iris['species'].isin(['versicolor', 'virginica'])]
+    X = ['sepal_length', 'sepal_width', 'petal_length']
+    y = 'species'
+
+    scores = run_cross_validation(
+        X=X, y=y, data=df_iris, model='svm', cv=RepeatedKFold(random_state=42),
+        seed=55, return_indices=True)
+
+    cv_splits = RepeatedKFold(random_state=42).split(df_iris[X], df_iris[y])
+    train_indices, test_indices = zip(*list(cv_splits))
+    train_indices, test_indices = np.array(
+        train_indices), np.array(test_indices)
+    score_train_indices = np.concatenate(
+        scores['train_indices'].values).reshape(train_indices.shape)
+    score_test_indices = np.concatenate(
+        scores['test_indices'].values).reshape(test_indices.shape)
+    assert_array_equal(score_train_indices, train_indices)
+    assert_array_equal(score_test_indices, test_indices)
+
+
+def test_returned_indices_reproducible():
+
+    df_iris = load_dataset('iris')
+
+    df_iris = df_iris[df_iris['species'].isin(['versicolor', 'virginica'])]
+    X = ['sepal_length', 'sepal_width', 'petal_length']
+    y = 'species'
+
+    scores_1 = run_cross_validation(
+        X=X, y=y, data=df_iris, model='svm', cv=RepeatedKFold(),
+        seed=55, return_indices=True)
+
+    scores_2 = run_cross_validation(
+        X=X, y=y, data=df_iris, model='svm', cv=RepeatedKFold(),
+        seed=55, return_indices=True)
+
+    scores_3 = run_cross_validation(
+        X=X, y=y, data=df_iris, model='svm', cv=RepeatedKFold(),
+        seed=55, return_indices=True)
+
+    assert_series_equal(scores_1['train_indices'],
+                        scores_2['train_indices'])
+
+    assert_series_equal(scores_1['train_indices'],
+                        scores_3['train_indices'])
