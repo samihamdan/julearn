@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Regression Analysis &mdash; julearn  documentation</title>
   
@@ -16,10 +16,14 @@
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
 
   
   
+
   
+  
+
   
 
   
@@ -32,7 +36,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -54,7 +57,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> julearn
+            <a href="../../index.html" class="icon icon-home"> julearn
           
 
           
@@ -147,6 +150,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -160,7 +165,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/auto_examples/basic/plot_example_regression.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -176,7 +181,8 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-basic-plot-example-regression-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-basic-plot-example-regression-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="regression-analysis">
 <span id="sphx-glr-auto-examples-basic-plot-example-regression-py"></span><h1>Regression Analysis<a class="headerlink" href="#regression-analysis" title="Permalink to this headline">¶</a></h1>
@@ -199,23 +205,18 @@ a regression analysis using a Ridge Regression model.</p>
 <span class="kn">from</span> <span class="nn">julearn.utils</span> <span class="kn">import</span> <span class="n">configure_logging</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/travis/virtualenv/python3.7.1/lib/python3.7/importlib/_bootstrap.py:219: RuntimeWarning: numpy.ufunc size changed, may indicate binary incompatibility. Expected 192 from C header, got 216 from PyObject
-  return f(*args, **kwds)
-</pre></div>
-</div>
 <p>Set the logging level to info to see extra information</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configure_logging</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2020-12-13 17:38:42,073 - julearn - INFO - ===== Lib Versions =====
-2020-12-13 17:38:42,073 - julearn - INFO - numpy: 1.16.4
-2020-12-13 17:38:42,073 - julearn - INFO - scipy: 1.5.4
-2020-12-13 17:38:42,073 - julearn - INFO - sklearn: 0.23.2
-2020-12-13 17:38:42,073 - julearn - INFO - pandas: 1.1.5
-2020-12-13 17:38:42,073 - julearn - INFO - julearn: 0.2.5.dev10+g635a4f7
-2020-12-13 17:38:42,073 - julearn - INFO - ========================
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-02-26 20:12:31,423 - julearn - INFO - ===== Lib Versions =====
+2021-02-26 20:12:31,423 - julearn - INFO - numpy: 1.19.5
+2021-02-26 20:12:31,423 - julearn - INFO - scipy: 1.6.1
+2021-02-26 20:12:31,423 - julearn - INFO - sklearn: 0.24.1
+2021-02-26 20:12:31,423 - julearn - INFO - pandas: 1.2.2
+2021-02-26 20:12:31,424 - julearn - INFO - julearn: 0.2.5.dev23+g7f3ac65
+2021-02-26 20:12:31,424 - julearn - INFO - ========================
 </pre></div>
 </div>
 <p>load the diabetes data from sklearn as a pandas dataframe</p>
@@ -286,20 +287,20 @@ for scoring</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2020-12-13 17:38:42,452 - julearn - INFO - Using default CV
-2020-12-13 17:38:42,452 - julearn - INFO - ==== Input Data ====
-2020-12-13 17:38:42,452 - julearn - INFO - Using dataframe as input
-2020-12-13 17:38:42,452 - julearn - INFO - Features: [&#39;age&#39;, &#39;sex&#39;, &#39;bmi&#39;, &#39;bp&#39;, &#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;, &#39;s4&#39;, &#39;s5&#39;, &#39;s6&#39;]
-2020-12-13 17:38:42,452 - julearn - INFO - Target: target
-2020-12-13 17:38:42,453 - julearn - INFO - Expanded X: [&#39;age&#39;, &#39;sex&#39;, &#39;bmi&#39;, &#39;bp&#39;, &#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;, &#39;s4&#39;, &#39;s5&#39;, &#39;s6&#39;]
-2020-12-13 17:38:42,453 - julearn - INFO - Expanded Confounds: []
-2020-12-13 17:38:42,454 - julearn - INFO - ====================
-2020-12-13 17:38:42,454 - julearn - INFO -
-2020-12-13 17:38:42,454 - julearn - INFO - ====== Model ======
-2020-12-13 17:38:42,454 - julearn - INFO - Obtaining model by name: ridge
-2020-12-13 17:38:42,454 - julearn - INFO - ===================
-2020-12-13 17:38:42,454 - julearn - INFO -
-2020-12-13 17:38:42,455 - julearn - INFO - CV interpreted as RepeatedKFold with 5 repetitions of 5 folds
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-02-26 20:12:31,879 - julearn - INFO - Using default CV
+2021-02-26 20:12:31,879 - julearn - INFO - ==== Input Data ====
+2021-02-26 20:12:31,879 - julearn - INFO - Using dataframe as input
+2021-02-26 20:12:31,879 - julearn - INFO - Features: [&#39;age&#39;, &#39;sex&#39;, &#39;bmi&#39;, &#39;bp&#39;, &#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;, &#39;s4&#39;, &#39;s5&#39;, &#39;s6&#39;]
+2021-02-26 20:12:31,879 - julearn - INFO - Target: target
+2021-02-26 20:12:31,880 - julearn - INFO - Expanded X: [&#39;age&#39;, &#39;sex&#39;, &#39;bmi&#39;, &#39;bp&#39;, &#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;, &#39;s4&#39;, &#39;s5&#39;, &#39;s6&#39;]
+2021-02-26 20:12:31,880 - julearn - INFO - Expanded Confounds: []
+2021-02-26 20:12:31,881 - julearn - INFO - ====================
+2021-02-26 20:12:31,881 - julearn - INFO -
+2021-02-26 20:12:31,881 - julearn - INFO - ====== Model ======
+2021-02-26 20:12:31,882 - julearn - INFO - Obtaining model by name: ridge
+2021-02-26 20:12:31,882 - julearn - INFO - ===================
+2021-02-26 20:12:31,882 - julearn - INFO -
+2021-02-26 20:12:31,882 - julearn - INFO - CV interpreted as RepeatedKFold with 5 repetitions of 5 folds
 </pre></div>
 </div>
 <p>The scores dataframe has all the values for each CV split.</p>
@@ -307,16 +308,16 @@ for scoring</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   fit_time  score_time  test_neg_mean_absolute_error  repeat  fold
-0  0.013648    0.009524                    -53.711774       0     0
-1  0.012154    0.010720                    -38.334731       0     1
-2  0.015215    0.007949                    -46.578596       0     2
-3  0.011695    0.007959                    -48.109208       0     3
-4  0.012083    0.007963                    -42.632269       0     4
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   fit_time  score_time  test_score  repeat  fold
+0  0.013743    0.008113  -53.711774       0     0
+1  0.012316    0.008044  -38.334731       0     1
+2  0.012373    0.008107  -46.578596       0     2
+3  0.012350    0.008023  -48.109208       0     3
+4  0.012367    0.008177  -42.632269       0     4
 </pre></div>
 </div>
 <p>Mean value of mean absolute error across CV</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;test_neg_mean_absolute_error&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -325,7 +326,7 @@ for scoring</p>
 </div>
 <p>Now we can get the MAE fold and repetition:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_mae</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
-    <span class="p">[</span><span class="s1">&#39;repeat&#39;</span><span class="p">,</span> <span class="s1">&#39;fold&#39;</span><span class="p">])[</span><span class="s1">&#39;test_neg_mean_absolute_error&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="p">[</span><span class="s1">&#39;repeat&#39;</span><span class="p">,</span> <span class="s1">&#39;fold&#39;</span><span class="p">])[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">df_mae</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Repeats&#39;</span>
 <span class="n">df_mae</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;K-fold splits&#39;</span>
 
@@ -397,7 +398,7 @@ of true values vs predicted values</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(10.75, 324.25, 10.75, 324.25)
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.446 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.566 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-basic-plot-example-regression-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5d15362022e35d28ba40d25fd042f86e/plot_example_regression.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_example_regression.py</span></code></a></p>
@@ -414,37 +415,29 @@ of true values vs predicted values</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="plot_confound_removal_classification.html" class="btn btn-neutral float-right" title="Confound Removal (model comparison)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="plot_groupcv_inspect_svm.html" class="btn btn-neutral float-left" title="Inspecting SVM models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="plot_confound_removal_classification.html" class="btn btn-neutral float-right" title="Confound Removal (model comparison)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="plot_groupcv_inspect_svm.html" class="btn btn-neutral float-left" title="Inspecting SVM models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Authors of julearn
+        &#169; Copyright 2020, Authors of julearn.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

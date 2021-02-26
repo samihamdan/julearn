@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Simple Binary Classification &mdash; julearn  documentation</title>
   
@@ -16,10 +16,14 @@
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
 
   
   
+
   
+  
+
   
 
   
@@ -32,7 +36,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -54,7 +57,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> julearn
+            <a href="../../index.html" class="icon icon-home"> julearn
           
 
           
@@ -147,6 +150,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -160,7 +165,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/auto_examples/basic/run_simple_binary_classification.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -176,7 +181,8 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-basic-run-simple-binary-classification-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-basic-run-simple-binary-classification-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="simple-binary-classification">
 <span id="sphx-glr-auto-examples-basic-run-simple-binary-classification-py"></span><h1>Simple Binary Classification<a class="headerlink" href="#simple-binary-classification" title="Permalink to this headline">¶</a></h1>
@@ -190,23 +196,18 @@ classification using a Support Vector Machine classifier.</p>
 <span class="kn">from</span> <span class="nn">julearn.utils</span> <span class="kn">import</span> <span class="n">configure_logging</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/travis/virtualenv/python3.7.1/lib/python3.7/importlib/_bootstrap.py:219: RuntimeWarning: numpy.ufunc size changed, may indicate binary incompatibility. Expected 192 from C header, got 216 from PyObject
-  return f(*args, **kwds)
-</pre></div>
-</div>
 <p>Set the logging level to info to see extra information</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configure_logging</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2020-12-13 17:38:31,446 - julearn - INFO - ===== Lib Versions =====
-2020-12-13 17:38:31,446 - julearn - INFO - numpy: 1.16.4
-2020-12-13 17:38:31,446 - julearn - INFO - scipy: 1.5.4
-2020-12-13 17:38:31,446 - julearn - INFO - sklearn: 0.23.2
-2020-12-13 17:38:31,446 - julearn - INFO - pandas: 1.1.5
-2020-12-13 17:38:31,446 - julearn - INFO - julearn: 0.2.5.dev10+g635a4f7
-2020-12-13 17:38:31,446 - julearn - INFO - ========================
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-02-26 20:12:17,185 - julearn - INFO - ===== Lib Versions =====
+2021-02-26 20:12:17,186 - julearn - INFO - numpy: 1.19.5
+2021-02-26 20:12:17,186 - julearn - INFO - scipy: 1.6.1
+2021-02-26 20:12:17,186 - julearn - INFO - sklearn: 0.24.1
+2021-02-26 20:12:17,186 - julearn - INFO - pandas: 1.2.2
+2021-02-26 20:12:17,186 - julearn - INFO - julearn: 0.2.5.dev23+g7f3ac65
+2021-02-26 20:12:17,186 - julearn - INFO - ========================
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_iris</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
@@ -228,43 +229,43 @@ We will try to predict the species.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2020-12-13 17:38:31,861 - julearn - INFO - Using default CV
-2020-12-13 17:38:31,861 - julearn - INFO - ==== Input Data ====
-2020-12-13 17:38:31,861 - julearn - INFO - Using dataframe as input
-2020-12-13 17:38:31,861 - julearn - INFO - Features: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
-2020-12-13 17:38:31,861 - julearn - INFO - Target: species
-2020-12-13 17:38:31,862 - julearn - INFO - Expanded X: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
-2020-12-13 17:38:31,862 - julearn - INFO - Expanded Confounds: []
-2020-12-13 17:38:31,863 - julearn - INFO - ====================
-2020-12-13 17:38:31,864 - julearn - INFO -
-2020-12-13 17:38:31,864 - julearn - INFO - ====== Model ======
-2020-12-13 17:38:31,864 - julearn - INFO - Obtaining model by name: svm
-2020-12-13 17:38:31,864 - julearn - INFO - ===================
-2020-12-13 17:38:31,864 - julearn - INFO -
-2020-12-13 17:38:31,864 - julearn - INFO - CV interpreted as RepeatedKFold with 5 repetitions of 5 folds
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-02-26 20:12:17,255 - julearn - INFO - Using default CV
+2021-02-26 20:12:17,255 - julearn - INFO - ==== Input Data ====
+2021-02-26 20:12:17,255 - julearn - INFO - Using dataframe as input
+2021-02-26 20:12:17,255 - julearn - INFO - Features: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
+2021-02-26 20:12:17,255 - julearn - INFO - Target: species
+2021-02-26 20:12:17,256 - julearn - INFO - Expanded X: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
+2021-02-26 20:12:17,256 - julearn - INFO - Expanded Confounds: []
+2021-02-26 20:12:17,257 - julearn - INFO - ====================
+2021-02-26 20:12:17,257 - julearn - INFO -
+2021-02-26 20:12:17,257 - julearn - INFO - ====== Model ======
+2021-02-26 20:12:17,257 - julearn - INFO - Obtaining model by name: svm
+2021-02-26 20:12:17,257 - julearn - INFO - ===================
+2021-02-26 20:12:17,258 - julearn - INFO -
+2021-02-26 20:12:17,258 - julearn - INFO - CV interpreted as RepeatedKFold with 5 repetitions of 5 folds
 0     0.95
 1     0.95
-2     0.80
+2     0.95
 3     0.85
 4     0.95
-5     0.85
-6     1.00
-7     0.90
-8     1.00
-9     0.90
-10    0.85
+5     1.00
+6     0.85
+7     0.85
+8     0.90
+9     0.95
+10    0.95
 11    0.90
-12    0.80
+12    0.95
 13    1.00
-14    1.00
+14    0.80
 15    0.90
-16    0.90
-17    0.90
+16    0.95
+17    0.95
 18    0.95
 19    0.95
-20    0.90
-21    0.85
-22    0.95
+20    0.95
+21    0.90
+22    0.85
 23    0.95
 24    0.85
 Name: test_score, dtype: float64
@@ -296,21 +297,21 @@ suitable metric is the <cite>balanced_accuracy</cite>. More information in sciki
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2020-12-13 17:38:32,416 - julearn - INFO - Setting random seed to 42
-2020-12-13 17:38:32,416 - julearn - INFO - Using default CV
-2020-12-13 17:38:32,416 - julearn - INFO - ==== Input Data ====
-2020-12-13 17:38:32,416 - julearn - INFO - Using dataframe as input
-2020-12-13 17:38:32,416 - julearn - INFO - Features: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
-2020-12-13 17:38:32,416 - julearn - INFO - Target: species
-2020-12-13 17:38:32,416 - julearn - INFO - Expanded X: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
-2020-12-13 17:38:32,416 - julearn - INFO - Expanded Confounds: []
-2020-12-13 17:38:32,417 - julearn - INFO - ====================
-2020-12-13 17:38:32,417 - julearn - INFO -
-2020-12-13 17:38:32,417 - julearn - INFO - ====== Model ======
-2020-12-13 17:38:32,418 - julearn - INFO - Obtaining model by name: svm
-2020-12-13 17:38:32,418 - julearn - INFO - ===================
-2020-12-13 17:38:32,418 - julearn - INFO -
-2020-12-13 17:38:32,418 - julearn - INFO - CV interpreted as RepeatedKFold with 5 repetitions of 5 folds
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-02-26 20:12:17,849 - julearn - INFO - Setting random seed to 42
+2021-02-26 20:12:17,850 - julearn - INFO - Using default CV
+2021-02-26 20:12:17,850 - julearn - INFO - ==== Input Data ====
+2021-02-26 20:12:17,850 - julearn - INFO - Using dataframe as input
+2021-02-26 20:12:17,850 - julearn - INFO - Features: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
+2021-02-26 20:12:17,850 - julearn - INFO - Target: species
+2021-02-26 20:12:17,850 - julearn - INFO - Expanded X: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
+2021-02-26 20:12:17,850 - julearn - INFO - Expanded Confounds: []
+2021-02-26 20:12:17,851 - julearn - INFO - ====================
+2021-02-26 20:12:17,851 - julearn - INFO -
+2021-02-26 20:12:17,851 - julearn - INFO - ====== Model ======
+2021-02-26 20:12:17,851 - julearn - INFO - Obtaining model by name: svm
+2021-02-26 20:12:17,851 - julearn - INFO - ===================
+2021-02-26 20:12:17,851 - julearn - INFO -
+2021-02-26 20:12:17,851 - julearn - INFO - CV interpreted as RepeatedKFold with 5 repetitions of 5 folds
 0.895
 0.8708886668886668
 </pre></div>
@@ -326,30 +327,30 @@ In this example, we are interested in detecting <cite>versicolor</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">precision_scores</span> <span class="o">=</span> <span class="n">run_cross_validation</span><span class="p">(</span>
     <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_unbalanced</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;svm&#39;</span><span class="p">,</span> <span class="n">preprocess_X</span><span class="o">=</span><span class="s1">&#39;zscore&#39;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
     <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="n">pos_labels</span><span class="o">=</span><span class="s1">&#39;versicolor&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">precision_scores</span><span class="p">[</span><span class="s1">&#39;test_precision&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">precision_scores</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2020-12-13 17:38:33,126 - julearn - INFO - Setting random seed to 42
-2020-12-13 17:38:33,126 - julearn - INFO - Using default CV
-2020-12-13 17:38:33,126 - julearn - INFO - ==== Input Data ====
-2020-12-13 17:38:33,126 - julearn - INFO - Using dataframe as input
-2020-12-13 17:38:33,126 - julearn - INFO - Features: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
-2020-12-13 17:38:33,126 - julearn - INFO - Target: species
-2020-12-13 17:38:33,126 - julearn - INFO - Expanded X: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
-2020-12-13 17:38:33,126 - julearn - INFO - Expanded Confounds: []
-2020-12-13 17:38:33,127 - julearn - INFO - Setting the following as positive labels [&#39;versicolor&#39;]
-2020-12-13 17:38:33,127 - julearn - INFO - ====================
-2020-12-13 17:38:33,127 - julearn - INFO -
-2020-12-13 17:38:33,127 - julearn - INFO - ====== Model ======
-2020-12-13 17:38:33,127 - julearn - INFO - Obtaining model by name: svm
-2020-12-13 17:38:33,128 - julearn - INFO - ===================
-2020-12-13 17:38:33,128 - julearn - INFO -
-2020-12-13 17:38:33,128 - julearn - INFO - CV interpreted as RepeatedKFold with 5 repetitions of 5 folds
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2021-02-26 20:12:18,663 - julearn - INFO - Setting random seed to 42
+2021-02-26 20:12:18,664 - julearn - INFO - Using default CV
+2021-02-26 20:12:18,664 - julearn - INFO - ==== Input Data ====
+2021-02-26 20:12:18,664 - julearn - INFO - Using dataframe as input
+2021-02-26 20:12:18,664 - julearn - INFO - Features: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
+2021-02-26 20:12:18,664 - julearn - INFO - Target: species
+2021-02-26 20:12:18,664 - julearn - INFO - Expanded X: [&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;]
+2021-02-26 20:12:18,664 - julearn - INFO - Expanded Confounds: []
+2021-02-26 20:12:18,665 - julearn - INFO - Setting the following as positive labels [&#39;versicolor&#39;]
+2021-02-26 20:12:18,665 - julearn - INFO - ====================
+2021-02-26 20:12:18,665 - julearn - INFO -
+2021-02-26 20:12:18,665 - julearn - INFO - ====== Model ======
+2021-02-26 20:12:18,665 - julearn - INFO - Obtaining model by name: svm
+2021-02-26 20:12:18,666 - julearn - INFO - ===================
+2021-02-26 20:12:18,666 - julearn - INFO -
+2021-02-26 20:12:18,666 - julearn - INFO - CV interpreted as RepeatedKFold with 5 repetitions of 5 folds
 0.9223333333333333
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.222 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.086 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-basic-run-simple-binary-classification-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/990d670dce74b7e305df76825119c01a/run_simple_binary_classification.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">run_simple_binary_classification.py</span></code></a></p>
@@ -366,37 +367,29 @@ In this example, we are interested in detecting <cite>versicolor</cite>.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="plot_inspect_random_forest.html" class="btn btn-neutral float-right" title="Inspecting Random Forest models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="Basic Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="plot_inspect_random_forest.html" class="btn btn-neutral float-right" title="Inspecting Random Forest models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Basic Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Authors of julearn
+        &#169; Copyright 2020, Authors of julearn.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
